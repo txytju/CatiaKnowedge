@@ -2,7 +2,7 @@
 
 ## 背景
 - 类型：`Action`
-- 用途：用于模版的实例化，模版的特点是其输入条件（`Inputs`）为两个坐标系。
+- 用途：用于模版的实例化，该模版的特点是其输入条件（`Inputs`）为两个坐标系，当然并不是每个模版都是有两个输入条件，因模版而异，这里仅为举例。
 - 使用基础
   - 输入参数设计表：dt
   - 输出设计表：dt_out
@@ -16,8 +16,9 @@
   - 另外一端坐标系：Axis2
   - 引导线：Curve
 - 需要填写
-  -
+  - 不同的信息在设计表中分别位于哪一列
 - 需要指定
+  - 设计表
   -
 - 疑问
   - 查`InstantiateTemplate`的说明，Resource的类型是什么？是不是String？
@@ -58,11 +59,10 @@ set column_QDZH =
 set column_ZDZH =
 
 set Resource =
-set name = dt.CellAsString(i, ) +
 //////////////////////////////////////////////////////////////////
 
 i = 1
-for i while i <= AxisList.Size()-1
+for i while i <= AxisList.Size()
 {
 	// 指定使用什么模板
 	temp=InstantiateTemplate(Resource, pro.Reference)
@@ -73,6 +73,7 @@ for i while i <= AxisList.Size()-1
 	temp->SetAttributeObject("Axis2", Axis2)
 	temp->SetAttributeObject("Curve",c)
 	// 实例的命名
+  set name =
 	temp.Name = name
 	temp.Reference.Name= name
 
